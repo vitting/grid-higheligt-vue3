@@ -11,7 +11,8 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       'balm-ui-plus': 'balm-ui/dist/balm-ui-plus.esm.js',
-      'balm-ui-css': 'balm-ui/dist/balm-ui.css'
+      'balm-ui-css': 'balm-ui/dist/balm-ui.css',
+      'balm-ui-next': 'balm-ui/dist/balm-ui-next.js'
     }
   }
 })
