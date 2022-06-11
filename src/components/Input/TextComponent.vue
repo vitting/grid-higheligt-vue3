@@ -10,7 +10,7 @@ defineProps({
 
 <template>
     <div>
-        <ui-textfield :type="1" :disabled="disabled">TextInput</ui-textfield>
+        <ui-textfield :type="1" fullwidth :disabled="disabled">TextInput</ui-textfield>
     </div>
 </template>
 

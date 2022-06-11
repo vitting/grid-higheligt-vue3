@@ -10,7 +10,7 @@ defineProps({
 
 <template>
     <div>
-        <ui-textfield :type="1" inputType="number" :disabled="disabled">NumberInput</ui-textfield>
+        <ui-textfield :type="1" inputType="number" fullwidth :disabled="disabled">NumberInput</ui-textfield>
     </div>
 </template>
 
