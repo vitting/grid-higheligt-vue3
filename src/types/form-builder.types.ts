@@ -5,12 +5,13 @@ export interface Category {
 
 export interface CategoryComponent {
   id: string;
-  name: string;
+  name: componentType;
   description: string;
 }
 
 export interface FormBuilderComponent {
   id: string;
+  type: componentType;
   label: string;
   validation: ComponentValidation;
 }
@@ -22,3 +23,5 @@ export interface ComponentValidation {
   minLength?: number;
   maxLength?: number;
 }
+
+export type componentType = "DateComponent" | "NumberComponent" | "TextComponent" | "SelectComponent"

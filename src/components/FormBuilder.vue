@@ -1,43 +1,9 @@
 <script setup lang="ts">
-import { uid } from 'uid';
+import type { Category } from "@/types/form-builder.types";
 import { ref, watch } from "vue";
 import FormBuilderComponents from "./FormBuilderComponents.vue";
 import FormBuilderDropZone from "./FormBuilderDropZone.vue";
 import FormBuilderProperties from "./FormBuilderProperties.vue";
-
-
-const components = ref([
-    {
-        categoryName: "Category 1",
-        components: [
-            {
-                id: uid(),
-                name: "DateComponent",
-                description: "Description or tooltip for DateComponent"
-            },
-            {
-                id: uid(),
-                name: "NumberComponent",
-                description: "Description or tooltip for NumberComponent"
-            },
-            {
-                id: uid(),
-                name: "TextComponent",
-                description: "Description or tooltip for TextComponent"
-            }
-        ]
-    },
-    {
-        categoryName: "Category 2",
-        components: [
-            {
-                id: uid(),
-                name: "SelectComponent",
-                description: "Description or tooltip for SelectComponent"
-            },
-        ]
-    }
-])
 
 const componentProperties = ref("")
 
@@ -67,7 +33,7 @@ watch(
 
 <template>
     <div class="container">
-        <FormBuilderComponents :components="components"></FormBuilderComponents>
+        <FormBuilderComponents></FormBuilderComponents>
         <FormBuilderDropZone @clickcomponent="componentPropertyHandler($event)"></FormBuilderDropZone>
         <FormBuilderProperties :component-properties="componentProperties"></FormBuilderProperties>
     </div>

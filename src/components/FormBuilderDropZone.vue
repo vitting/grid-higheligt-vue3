@@ -1,35 +1,31 @@
 <script setup lang="ts">
 import draggable from 'vuedraggable'
 import { ref } from "vue";
+import type { FormBuilderComponent } from "@/types/form-builder.types";
 
 const emits = defineEmits(["clickcomponent"])
-
 const componentProperties = ref("")
-
-const formComponentSelected = ref("")
 const formComponents = ref([])
 
-const componentPropertyHandler = (element) => {
-    console.log(element)
-    formComponentSelected.value = element.id
-    componentProperties.value = `${element.name}Properties`
+const componentPropertyHandler = (element: FormBuilderComponent) => {
+    componentProperties.value = `${element.type}Properties`
     emits("clickcomponent", componentProperties.value)
 }
 </script>
 
 <template>
     <div class="form">
-            <div>
-                <draggable :list="formComponents" :group="{ name: 'componentList' }" class="drop-zone" item-key="id">
-                    <template #item="{ element }">
-                        <div>
-                            <component :is="element.name" class="component" @click="componentPropertyHandler(element)"
-                                v-bind="{ disabled: false }"></component>
-                        </div>
-                    </template>
-                </draggable>
-            </div>
+        <div>
+            <draggable :list="formComponents" :group="{ name: 'componentList' }" class="drop-zone" item-key="id">
+                <template #item="{ element }">
+                    <div>
+                        <component :is="element.type" class="component" @click="componentPropertyHandler(element)"
+                            v-bind="{ disabled: false }"></component>
+                    </div>
+                </template>
+            </draggable>
         </div>
+    </div>
 </template>
 
 <style scoped>

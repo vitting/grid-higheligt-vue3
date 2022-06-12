@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { uid } from 'uid';
 import draggable from 'vuedraggable'
-import type { Category } from "@/types/form-builder.types"
-import { ref, toRef } from "vue";
+import { ref } from "vue";
+import { useFormBuilderStore } from "@/stores/form-builder.store";
+import FormBuilderComponentsTile from "./FormBuilderComponentsTile.vue";
+import type { CategoryComponent } from "@/types/form-builder.types";
+import ComponentCreator from "@/Utilities/component-creator";
 
-defineProps<{ components: Category[] }>()
-
+const fbStore = useFormBuilderStore()
 const switchValue = ref(false)
 const moveHandler = (evt: any) => {
     console.log(evt.relatedContext)
@@ -16,13 +17,11 @@ const moveHandler = (evt: any) => {
     // return false
 }
 
-const cloneElement = (element: any) => {
+const cloneElement = (element: CategoryComponent) => {
+    const component = ComponentCreator.create(element)
     console.log(element)
     // return element
-    return {
-        id: `c${uid()}`,
-        name: element.name
-    }
+    return component
 }
 
 </script>
@@ -35,24 +34,17 @@ const cloneElement = (element: any) => {
                 <label>Show as Tile</label>
             </ui-form-field>
         </div>
-        <div class="category" v-for="category in components" :key="category.categoryName">
+        <div class="category" v-for="category in fbStore.categoryList" :key="category.categoryName">
             <h3>{{ category.categoryName }}</h3>
-            <draggable :list="category.components" :clone="cloneElement" item-key="id" :class="{ 'tile-grid': switchValue }"
-                :group="{ name: 'componentList', pull: 'clone', put: false }" :move="moveHandler" :sort="false">
+            <draggable :list="category.components" :clone="cloneElement" item-key="id"
+                :class="{ 'tile-grid': switchValue }" :group="{ name: 'componentList', pull: 'clone', put: false }"
+                :move="moveHandler" :sort="false">
                 <template #item="{ element }">
                     <div>
-                        <component v-if="!switchValue" :is="element.name" class="component" :title="element.description">
+                        <component v-if="!switchValue" :is="element.name" class="component"
+                            :title="element.description">
                         </component>
-                        <div v-else class="tile-container">
-                            <ui-card>
-                                <ui-card-content>
-                                    <div class="tile">
-                                        <ui-icon :size="18">keyboard</ui-icon>
-                                        {{ element.name }}
-                                    </div>
-                                </ui-card-content>
-                            </ui-card>
-                        </div>
+                        <FormBuilderComponentsTile v-else :name="element.name"></FormBuilderComponentsTile>
                     </div>
                 </template>
             </draggable>
@@ -69,23 +61,6 @@ const cloneElement = (element: any) => {
 .tile-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-}
-
-.tile-container {
-    margin-bottom: 5px;
-    margin-right: 5px;
-}
-
-.tile {
-    display: flex;
-    align-items: center;
-    padding: 5px;
-    font-size: 0.8em;
-}
-
-.tile>* {
-    margin-right: 5px;
-
 }
 
 .components {
