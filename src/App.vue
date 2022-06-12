@@ -1,9 +1,11 @@
 <script setup lang="ts">
+// import { ref } from "vue";
 import FormBuilder from "./components/FormBuilder.vue";
+// const open = ref(true)
 </script>
 
 <template>
-  <FormBuilder></FormBuilder>
+  <FormBuilder></FormBuilder>      
 </template>
 
 <style>

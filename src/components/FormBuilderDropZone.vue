@@ -50,8 +50,8 @@ form {
 }
 
 .form .drop-zone .component {
-    margin: 10px;
-    padding: 1rem;
+    /* margin: 10px; */
+    padding: 5px;
     border: 1px solid transparent;
     border-radius: 4px;
 }

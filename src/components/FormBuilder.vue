@@ -81,7 +81,6 @@ watch(
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: 1fr;
-    /* grid-auto-rows: minmax(min-content, max-content); */
 }
 
 </style>

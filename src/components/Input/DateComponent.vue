@@ -10,7 +10,7 @@
 
 <template>
     <div>
-        <ui-textfield :type="1" inputType="date" fullwidth :disabled="disabled">DateInput</ui-textfield>
+        <ui-textfield :type="1" inputType="date" fullwidth :disabled="disabled" :required="false">DateInput</ui-textfield>
     </div>
 </template>
 

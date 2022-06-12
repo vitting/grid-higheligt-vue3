@@ -13,7 +13,7 @@ const valuesForSelect = ref([{ label: "Option 1", value: 0 }, { label: "Option 2
 
 <template>
     <div>
-        <ui-select outlined :disabled="disabled" :options="valuesForSelect">
+        <ui-select outlined :disabled="disabled" :options="valuesForSelect" fullwidth>
             SelectComponent
         </ui-select>
     </div>
