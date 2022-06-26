@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import WrapperComponent from "@/components/WrapperComponent.vue"
 defineProps({
     disabled: {
         type: Boolean,
@@ -10,7 +11,9 @@ defineProps({
 
 <template>
     <div>
-        <ui-textfield :type="1" fullwidth :disabled="disabled">TextInput</ui-textfield>
+        <WrapperComponent>
+            <ui-textfield :type="1" fullwidth :disabled="disabled">TextInput</ui-textfield>
+        </WrapperComponent>
     </div>
 </template>
 

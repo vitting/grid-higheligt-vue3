@@ -41,9 +41,9 @@ form {
     padding: 10px;
 }
 
-.form .drop-zone:hover {
+/* .form .drop-zone:hover {
     border: 1px solid rgb(196, 217, 255);
-}
+} */
 
 .form .drop-zone .component {
     /* margin: 10px; */
